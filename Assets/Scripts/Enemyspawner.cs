@@ -6,10 +6,17 @@ public class Enemyspawner : MonoBehaviour
 {
 
     public GameObject enemy;
+
+    //creates position limit variable for rando spawn points
+    public float xPositionLimit;
     // Start is called before the first frame update
+    public float spawnRate;
+   
+    //respawn timer variable
     void Start()
-    {
-        SpawnSpike();
+    {   //spawns enemy
+       // SpawnSpike();
+       StartSpawning();
     }
 
     // Update is called once per frame
@@ -18,9 +25,28 @@ public class Enemyspawner : MonoBehaviour
         
     }
 
+    //function spawns spikes at random location
     void SpawnSpike()
     {
-        Instantiate(enemy,transform.position,Quaternion.identity);
+        float randomX = Random.Range(-xPositionLimit,xPositionLimit);
+
+        Vector2 spawnPosition = new Vector2(randomX,transform.position.y);
+
+        Instantiate(enemy,spawnPosition,Quaternion.identity);
+    }
+
+    //repeats SpawnSpike function
+    private void StartSpawning()
+    {
+        InvokeRepeating("SpawnSpike",1f, spawnRate);
+
+    }
+
+    //for gameover
+    public void StopSpawning()
+    {
+        CancelInvoke("SpawnSpike");
+    
     }
 
 }
