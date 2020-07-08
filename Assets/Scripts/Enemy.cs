@@ -12,11 +12,11 @@ public class Enemy : MonoBehaviour
         transform.Rotate(0,0,rotationSpeed);
     }
 
-    public void OnTriggerEnter2d(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     
         else if(collision.gameObject.tag == "Ground")
