@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemyspawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
 
     public GameObject enemy;
@@ -36,7 +36,7 @@ public class Enemyspawner : MonoBehaviour
     }
 
     //repeats SpawnSpike function
-    private void StartSpawning()
+    void StartSpawning()
     {
         InvokeRepeating("SpawnSpike",1f, spawnRate);
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float rotationSpeed;
-    
+    //dust
+    public GameObject dust;
 
     private void FixedUpdate()
     {
@@ -16,12 +17,22 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            GameManager.instance.GameOver();
         }
     
         else if(collision.gameObject.tag == "Ground")
-        {
-            Destroy(gameObject);
+        {   //adds to score
+            GameManager.instance.IncrementScore();
+            
+            gameObject.SetActive(false);
+            //dust at position of spike collision
+            GameObject dustEffect = Instantiate(dust,transform.position,Quaternion.identity);
+            //destroys dust effect after short time
+            
+            Destroy(dustEffect, 2f);
+            
+            Destroy(gameObject, 3f);
         }
     
     }
