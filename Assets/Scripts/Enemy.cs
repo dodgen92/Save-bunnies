@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,13 +18,10 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
-            GameManager.instance.GameOver();
         }
     
         else if(collision.gameObject.tag == "Ground")
-        {   //adds to score
-            GameManager.instance.IncrementScore();
-            
+        {   
             gameObject.SetActive(false);
             //dust at position of spike collision
             GameObject dustEffect = Instantiate(dust,transform.position,Quaternion.identity);
