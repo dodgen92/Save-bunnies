@@ -971,6 +971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 860392410}
   scoreText: {fileID: 2035257137}
+  scoreTextPanel: {fileID: 2012618575}
 --- !u!4 &1394789468
 Transform:
   m_ObjectHideFlags: 0
